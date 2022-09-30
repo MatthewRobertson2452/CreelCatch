@@ -23,7 +23,7 @@
 #' catch = log(useable_dat$cpd), effort = log(useable_dat$epd), random_effect = useable_dat$istate,
 #' first_covar = useable_dat$all_dev, second_covar = useable_dat$forest_wetland,
 #' third_covar = useable_dat$Income, gl_area = useable_dat$Area, gl_switch = 0, iGL = useable_dat$GL)
-model_prep<-function(n_covars = 0, E_intercept = 1, C_intercept = 0, catchability = 0,
+model_prep<-function(n_covars = 0, E_intercept = 0, C_intercept = 0, catchability = 0,
                      catch=0, effort=0, random_effect=0,
                      first_covar=0, second_covar=0,
                      third_covar=0, gl_switch = 0, gl_area=0, iGL=0){
@@ -55,6 +55,13 @@ model_prep<-function(n_covars = 0, E_intercept = 1, C_intercept = 0, catchabilit
   if(min(random_effect)!=0){
     random_effect<-as.numeric(random_effect)-1
   }
+  
+  if(length(random_effect)==1){random_effect<-rep(1, length(catch))}
+  if(length(first_covar)==1){first_covar<-rep(1, length(catch))}
+  if(length(second_covar)==1){second_covar<-rep(1, length(catch))}
+  if(length(third_covar)==1){third_covar<-rep(1, length(catch))}
+  if(length(gl_area)==1){gl_area<-rep(1, length(catch))}
+  if(length(iGL)==1){iGL<-rep(1, length(catch))}
 
   tmb.data<-list(
     log_C=catch,
