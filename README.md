@@ -17,7 +17,7 @@ Install the
 package and run:
 
 ``` r
-devtools::install_github(MatthewRobertson2452\CreelCatch)
+devtools::install_github("MatthewRobertson2452/CreelCatch")
 library(CreelCatch)
 ```
 
