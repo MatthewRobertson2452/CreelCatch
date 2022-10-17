@@ -131,7 +131,7 @@ output<-model_prep(catch = log(example_dat$Catch_per_day), effort = log(example_
 
 We can then run the model the same as before,
 
-```{r}
+```{r, results="hide", message=FALSE}
 obj <- TMB::MakeADFun(data = c(model = "CreelCatch", # which model to use
                                 output$tmb.data),
                        parameters = output$parameters,
@@ -183,7 +183,7 @@ Where gl_area is the input for waterbody area and iGL is the index of whether su
 
 Once this step is done, running the model and plotting is the same as before but with a slight modification for plotting covariates. When plotting covariates you only need to enter the name of covariates in addition to waterbody area and you need to indicate that gl_switch=1.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, results="hide", message=FALSE}
 obj <- TMB::MakeADFun(data = c(model = "CreelCatch", # which model to use
                                 output$tmb.data),
                        parameters = output$parameters,

@@ -210,26 +210,13 @@ obj <- TMB::MakeADFun(data = c(model = "CreelCatch", # which model to use
 
 opt<-nlminb(obj$par,obj$fn,obj$gr,
             control = list(trace=10,eval.max=2000,iter.max=1000))
-```
 
-    ##   0:     589.90448: 0.100000  1.00000 0.693147 0.693147
-    ##  10:     318.49556: 0.916892 0.275903 -0.0428166 0.379276
-
-``` r
 #####AIC
 2*opt$objective+ 2*length(opt$par)
-```
 
-    ## [1] 644.9675
-
-``` r
 #####BIC
 2*opt$objective + log(length(output$tmb.data$log_C))*length(obj$par)
-```
 
-    ## [1] 655.3881
-
-``` r
 rep <- obj$report()
 sdrep<-TMB::sdreport(obj)
 ```
@@ -291,15 +278,6 @@ Once this step is done, running the model and plotting is the same as
 before but with a slight modification for plotting covariates. When
 plotting covariates you only need to enter the name of covariates in
 addition to waterbody area and you need to indicate that gl\_switch=1.
-
-    ##   0:     590.20321: 0.100000  1.00000  1.00000  1.00000 0.693147 0.693147
-    ##  10:     310.23609: 0.934264 0.825646 0.416475 0.274712 -0.0758159 0.332450
-    ##  20:     306.72739: 0.924075 0.00385864 0.413896 0.267866 -0.0966178 0.317917
-    ##  30:     305.12158: 0.926947 -0.946622 0.412967 0.272712 -0.105398 0.311440
-
-    ## [1] 622.2176
-
-    ## [1] 637.8486
 
 ``` r
 plot_covars(rep=rep, sdrep=sdrep, output=output, n_covar=2, covar_name=c("Age"), gl_switch=1)
