@@ -21,9 +21,16 @@ devtools::install_github("MatthewRobertson2452/CreelCatch")
 library(CreelCatch)
 ```
 
-If you are having problems with installation, you can install the
-package locally as a ZIP file by clicking the Code menu and “download
-ZIP” from the [github
+If you have not used `TMB` before, you may need to install it as a
+“source” to install `CreelCatch`
+
+``` r
+install.packages('TMB', type = 'source')
+```
+
+If you are having further problems with installation, you can install
+the package locally as a ZIP file by clicking the Code menu and
+“download ZIP” from the [github
 page](https://github.com/MatthewRobertson2452/CreelCatch). You can then
 extract the folder in a local directory while recording the directory
 name (which I will reference as download\_dir). To install, then use
@@ -161,7 +168,7 @@ relationship between catch and effort by using the function `plot_cpue`
 plot_cpue(rep=rep, sdrep=sdrep, tmb.data=output$tmb.data)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 # Random Effects and Covariates Example
 
@@ -235,7 +242,7 @@ comparisons.
 plot_re(output=output, sdrep=sdrep, names=c("Michigan","Florida","Connecticut","Kansas","South Dakota"), re_name="State")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
 
 For covariates, you need to input model output, the object from
 `model_prep`, the number of covariates that were used, and the names of
@@ -245,7 +252,7 @@ those covariates.
 plot_covars(rep=rep, sdrep=sdrep, output=output, n_covar=1, covar_name=c("Waterbody Area"))
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-15-1.png)<!-- -->
 
 # Accounting for the Great Lakes Example
 
@@ -283,4 +290,4 @@ addition to waterbody area and you need to indicate that gl\_switch=1.
 plot_covars(rep=rep, sdrep=sdrep, output=output, n_covar=2, covar_name=c("Age"), gl_switch=1)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->

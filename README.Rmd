@@ -25,7 +25,13 @@ devtools::install_github("MatthewRobertson2452/CreelCatch")
 library(CreelCatch)
 ```
 
-If you are having problems with installation, you can install the package locally as a ZIP file by clicking the Code menu and "download ZIP" from the [github page](https://github.com/MatthewRobertson2452/CreelCatch). You can then extract the folder in a local directory while recording the directory name (which I will reference as download_dir). To install, then use
+If you have not used `TMB` before, you may need to install it as a "source" to install `CreelCatch`
+
+```{r, eval=FALSE}
+install.packages('TMB', type = 'source')
+```
+
+If you are having further problems with installation, you can install the package locally as a ZIP file by clicking the Code menu and "download ZIP" from the [github page](https://github.com/MatthewRobertson2452/CreelCatch). You can then extract the folder in a local directory while recording the directory name (which I will reference as download_dir). To install, then use
 ```{r, eval=FALSE}
 devtools::install_local(path=download_dir, dependencies=FALSE)
 library(CreelCatch)
