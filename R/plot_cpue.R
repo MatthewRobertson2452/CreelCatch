@@ -35,7 +35,7 @@ ce_dat<-data.frame(log_E=tmb.data$log_E, log_C=tmb.data$log_C)
 
 #setwd("Figs")
 
-ggplot()+
+ggplot2::ggplot()+
   geom_point(data=ce_dat, aes(x=log_E, y=log_C), col="darkgrey")+
   geom_ribbon(data=pred_c_e, aes(ymin=pred_C_low, ymax=pred_C_high, x=pred_E,y=pred_C), fill="lightblue", alpha=0.5)+
   geom_line(data=pred_c_e, aes(x=pred_E, y=pred_C), size=1.5)+

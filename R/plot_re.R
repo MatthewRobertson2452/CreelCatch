@@ -14,7 +14,12 @@
 #' @examples plot_re(output, sdrep, names=c("Michigan","Florida","Connecticut","Kansas","South Dakota"), re_name="State")
 plot_re<-function(output, sdrep, names=c("Michigan","Florida","Connecticut","Kansas","South Dakota"), re_name="State"){
 
+  
 if(length(output$parameters$tau_int)>1){
+  
+  if(length(output$parameters$tau_int) != length(names)){
+    stop("Random effect names is not equal length to the number of random effects")
+  }
 
 val_names<-names(sdrep$value)
 ind<-val_names=="tau_int"
@@ -25,7 +30,7 @@ est<-sdrep$value[ind]
 
 int_df<-data.frame(est, low_conf, high_conf, random_effect=names)
 
-p1<-ggplot(int_df, aes(x=reorder(random_effect,est), y=est))+
+p1<-ggplot2::ggplot(int_df, aes(x=reorder(random_effect,est), y=est))+
   geom_point(size=4)+
   geom_segment(aes(x=random_effect,xend=random_effect,y=low_conf,yend=high_conf), data=int_df)+
   geom_hline(yintercept=0, linetype="dashed", colour="red", size=1.25)+
@@ -37,6 +42,10 @@ p1<-ggplot(int_df, aes(x=reorder(random_effect,est), y=est))+
 
 if(length(output$parameters$q_dev)>1){
   
+  if(length(output$parameters$q_dev) != length(names)){
+    stop("Random effect names is not equal length to the number of random effects")
+  }
+  
   val_names<-names(sdrep$value)
   ind<-val_names=="q_dev"
   
@@ -46,7 +55,7 @@ if(length(output$parameters$q_dev)>1){
   
   int_df<-data.frame(est, low_conf, high_conf, random_effect=names)
   
-p2<-ggplot(int_df, aes(x=reorder(random_effect,est), y=est))+
+p2<-ggplot2::ggplot(int_df, aes(x=reorder(random_effect,est), y=est))+
     geom_point(size=4)+
     geom_segment(aes(x=random_effect,xend=random_effect,y=low_conf,yend=high_conf), data=int_df)+
     geom_hline(yintercept=0, linetype="dashed", colour="red", size=1.25)+
@@ -58,6 +67,10 @@ p2<-ggplot(int_df, aes(x=reorder(random_effect,est), y=est))+
 
 if(length(output$parameters$intercept)>1){
   
+  if(length(output$parameters$intercept) != length(names)){
+    stop("Random effect names is not equal length to the number of random effects")
+  }
+  
   val_names<-names(sdrep$value)
   ind<-val_names=="intercept"
   
@@ -67,7 +80,7 @@ if(length(output$parameters$intercept)>1){
   
   int_df<-data.frame(est, low_conf, high_conf, random_effect=names)
   
-p3<-ggplot(int_df, aes(x=reorder(random_effect,est), y=est))+
+p3<-ggplot2::ggplot(int_df, aes(x=reorder(random_effect,est), y=est))+
     geom_point(size=4)+
     geom_segment(aes(x=random_effect,xend=random_effect,y=low_conf,yend=high_conf), data=int_df)+
     geom_hline(yintercept=0, linetype="dashed", colour="red", size=1.25)+

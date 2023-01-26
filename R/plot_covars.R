@@ -36,7 +36,7 @@ if(n_covar==1 & gl_switch==0){
                        tau_low = c(first_tau_low),
                        E=c(covar_gl_dat$effort),
                        covar_dat=c(covar_gl_dat$first_covar))
-p1<-ggplot()+
+p1<-ggplot2::ggplot()+
   geom_point(data=covar_df, aes(x=covar_dat, y=E), colour="darkgrey")+
   geom_ribbon(data=covar_df, aes(ymin=tau_low, ymax=tau_high, x=covars,y=pred_E), fill="lightblue", alpha=0.5)+
   geom_line(data=covar_df, aes(x=covars, y=taus))+
@@ -71,7 +71,7 @@ if(n_covar==2 & gl_switch==0){
                        tau_low = c(first_tau_low, second_tau_low),
                        E=c(covar_gl_dat$effort,covar_gl_dat$effort),
                        covar_dat=c(covar_gl_dat$first_covar,covar_gl_dat$second_covar))
-p1<-  ggplot()+
+p1<- ggplot2::ggplot()+
     geom_point(data=covar_df, aes(x=covar_dat, y=E), colour="darkgrey")+
     geom_ribbon(data=covar_df, aes(ymin=tau_low, ymax=tau_high, x=covars,y=pred_E), fill="lightblue", alpha=0.5)+
     geom_line(data=covar_df, aes(x=covars, y=taus))+
@@ -113,7 +113,7 @@ if(n_covar==3 & gl_switch==0){
                        tau_low = c(first_tau_low, second_tau_low, third_tau_low),
                        E=c(covar_gl_dat$effort,covar_gl_dat$effort,covar_gl_dat$effort),
                        covar_dat=c(covar_gl_dat$first_covar,covar_gl_dat$second_covar, covar_gl_dat$third_covar))
- p1<- ggplot()+
+ p1<- ggplot2::ggplot()+
     geom_point(data=covar_df, aes(x=covar_dat, y=E), colour="darkgrey")+
     geom_ribbon(data=covar_df, aes(ymin=tau_low, ymax=tau_high, x=covars,y=pred_E), fill="lightblue", alpha=0.5)+
     geom_line(data=covar_df, aes(x=covars, y=taus))+
@@ -158,7 +158,7 @@ if(n_covar==1 & gl_switch==1){
                        E=c(noGL$effort, GL_dat$effort),
                        covar_dat=c(noGL$first_covar, GL_dat$first_covar))
   
-p1<-  ggplot()+
+p1<-  ggplot2::ggplot()+
     geom_point(data=covar_df, aes(x=covar_dat, y=E), colour="darkgrey")+
     geom_ribbon(data=covar_df, aes(ymin=tau_low, ymax=tau_high, x=covars,y=pred_E), fill="lightblue", alpha=0.5)+
     geom_line(data=covar_df, aes(x=covars, y=taus))+
@@ -212,7 +212,7 @@ if(n_covar==2 & gl_switch==1){
                        E=c(noGL$effort, GL_dat$effort, noGL$effort),
                        covar_dat=c(noGL$first_covar, GL_dat$first_covar, noGL$second_covar))
   
-  p1<- ggplot()+
+  p1<- ggplot2::ggplot()+
     geom_point(data=covar_df, aes(x=covar_dat, y=E), colour="darkgrey")+
     geom_ribbon(data=covar_df, aes(ymin=tau_low, ymax=tau_high, x=covars,y=pred_E), fill="lightblue", alpha=0.5)+
     geom_line(data=covar_df, aes(x=covars, y=taus))+
@@ -272,7 +272,7 @@ if(n_covar==3 & gl_switch==1){
                        E=c(noGL$effort, GL_dat$effort, noGL$effort, noGL$effort),
                        covar_dat=c(noGL$first_covar, GL_dat$first_covar, noGL$second_covar, noGL$third_covar))
   
-  p1<-  ggplot()+
+  p1<-  ggplot2::ggplot()+
     geom_point(data=covar_df, aes(x=covar_dat, y=E), colour="darkgrey")+
     geom_ribbon(data=covar_df, aes(ymin=tau_low, ymax=tau_high, x=covars,y=pred_E), fill="lightblue", alpha=0.5)+
     geom_line(data=covar_df, aes(x=covars, y=taus))+
